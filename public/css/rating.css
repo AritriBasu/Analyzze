@@ -1,0 +1,232 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial;
+    background-color:#4fd4fc6c;
+}
+
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color:white;
+    border-radius: 10px;
+    width:500px;
+}
+.center h1{
+    text-align:center;
+    padding:0 0 20px 0;
+    border-bottom:1px solid grey;
+}
+.center form{
+    padding:0 20px;
+    box-sizing: border-box;
+}
+form .txt_field{
+    position:relative;
+    border-bottom:2px solid #adadad;
+    margin:30px 0;
+}
+.txt_field input{
+    width:100%;
+    padding: 0 5px;
+    height:40px;
+    font-size: 16px;
+    border:none;
+    background: none;
+    outline:none;
+}
+.txt_field label{
+    position: absolute;
+    top:50%;
+    left:5px;
+    color:#adadad;
+    transform: translateY(-50%);
+    font-size:16px;
+    pointer-events:none;
+    transition: .5s;
+}
+.txt_field span::before{
+    content: '';
+    position:absolute;
+    top:40px;
+    left:0;
+    width:0%;
+    height:2px;
+    background: #2691d9;
+    transition: .5s;
+}
+.txt_field input:focus ~label,
+.txt_field input:not(:placeholder-shown):invalid ~label,
+.txt_field input:valid ~label{
+    top:-5px;
+    color:#2691d9;
+}
+.txt_field input:focus ~span::before{
+    width: 100%;
+} 
+.txt_field input:valid ~span::before{
+    width: 100%;
+    background-color: green;
+}
+ 
+.text_field input:not(:placeholder-shown):invalid ~span::before {
+    width: 100%;
+    background-color: red;
+}
+button{
+    width:100%;
+    height:50px;
+    border:1 px solid;
+    background:#2691d9;
+    border-radius: 25px;
+    font-size:18px;
+    color:#e9f4fb;
+    font-weight: 700;
+    cursor:pointer;
+    outline: none;
+
+}
+button:hover{
+    border-color: #2691d9;
+    transition:.5s;
+}
+.signup_link{
+    margin: 30px 0;
+    text-align: center;
+    font-size:16px;
+    color:#666666;
+}
+.signup_link a{
+    color:#2691d9;
+    text-decoration: none;
+}
+.signup_link a:hover{
+    text-decoration: underline;
+}
+
+.row{
+display: flex;
+}
+.column{
+    flex:50%;
+}
+.rate-form{
+    border: 5px solid #2691d9;
+    padding: 10px;
+    margin:20px;
+    border-radius: 25px;
+    width:80%;
+}
+/***navbar styles***/
+  /**nav styles**/
+  .navbar{
+    width:85%;
+    margin:auto;
+    padding:35px 0;
+    display:flex;
+    align-items: space-between;
+}
+.logo{
+  width:120px;
+  cursor:pointer;
+}
+.navbar ul li{
+  list-style:none;
+  display:inline-block;
+  margin:0 20px;
+  position:relative;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color:#fff;
+  text-transform:uppercase;
+}
+.navbar ul li::after{
+  content:'';
+  height:3px;
+  width:0;
+  background:#009688;
+  position:absolute;
+  left:0;
+  bottom: -10px;
+  transition:0.5s;
+}
+.navbar ul li:hover::after{
+  width:100%;
+}
+.content{
+  width:100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align:center;
+  color:#fff;
+}
+.content h1{
+  font-size:70px;
+  margin-top: 80px;
+}
+.content p{
+  margin:20px auto;
+  font-weight:100;
+}
+button{
+  width:200px;
+  padding:15px 0;
+  text-align:center;
+  margin:20px 10px;
+  border:2px solid #009688;
+  border-radius:25px;
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+span{
+  background: #009688;
+  height:100%;
+  width:0;
+  border-radius:25px;
+  position: absolute;
+  left:0;
+  bottom:0;
+  z-index:-1;
+  transition: 0.5s;
+}
+button:hover span{
+  width:100%;
+}
+button:hover{
+  border:none;
+}
+/**navbar ends**/
+
+/**star rating*/
+
+  .rating-css div {
+    color: #009688;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #ffe400;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #838383;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }

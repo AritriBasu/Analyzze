@@ -1,15 +1,15 @@
 {
-  "name": "storybooks",
+  "name": "analyzze",
   "version": "1.0.0",
-  "description": "App for creating public and private stories",
+  "description": "App for performing sentiment analysis on political opinion",
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
     "dev": "cross-env NODE_ENV=development nodemon app",
     "postinstall": "node ./scripts/post-install.js"
   },
-  "author": "Brad Traversy",
-  "license": "MIT",
+  "author": "Aritri Basu",
+  "license": "",
   "dependencies": {
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",

@@ -1,0 +1,161 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+   background: #4fd4fc6c;
+    /*background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../images/6383.jpg);*/
+  }
+  
+  /**nav styles**/
+  .navbar{
+    width:85%;
+    margin:auto;
+    padding:35px 0;
+    display:flex;
+    align-items: space-between;
+}
+.logo{
+  width:120px;
+  cursor:pointer;
+}
+.navbar ul li{
+  list-style:none;
+  display:inline-block;
+  margin:0 20px;
+  position:relative;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color:#fff;
+  text-transform:uppercase;
+}
+.navbar ul li::after{
+  content:'';
+  height:3px;
+  width:0;
+  background:#009688;
+  position:absolute;
+  left:0;
+  bottom: -10px;
+  transition:0.5s;
+}
+.navbar ul li:hover::after{
+  width:100%;
+}
+.content{
+  width:100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align:center;
+  color:#fff;
+}
+.content h1{
+  font-size:70px;
+  margin-top: 80px;
+}
+.content p{
+  margin:20px auto;
+  font-weight:100;
+}
+button{
+  width:200px;
+  padding:15px 0;
+  text-align:center;
+  margin:20px 10px;
+  border:2px solid #009688;
+  border-radius:25px;
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+span{
+  background: #009688;
+  height:100%;
+  width:0;
+  border-radius:25px;
+  position: absolute;
+  left:0;
+  bottom:0;
+  z-index:-1;
+  transition: 0.5s;
+}
+button:hover span{
+  width:100%;
+}
+button:hover{
+  border:none;
+}
+/**navbar ends**/
+
+  .card-block .btn-outline-primary {
+    width: 100%;
+    background-color:#009688;
+    color: #fff;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+  .btn-outline-primary:hover{
+    background-color: #4bf3e2c4;
+  }
+  .card {
+    margin: 20px 0;
+    height: 60em;
+  }
+  .news-card-img{
+    margin-top:10px;
+    height:220px;
+    width: 100%;
+  }
+.read-more{
+    margin-bottom:-1.8em;
+}
+  /* Flip Cards CSS */
+  .card-container {
+    perspective: 700px;
+  }
+  .card-flip {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    height: auto;
+    transition: all 0.25s ease-out;
+   
+    border: none;
+    height: 300px;
+  }
+  
+  .card-flip div {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    border: none;
+  }
+  
+  .card-flip .front {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card-flip .back {
+    padding: 2px;
+    text-align: left;
+    position: relative;
+    z-index: 0;
+    transform: rotateY(-180deg);
+  }
+  
+  .card-container:hover .card-flip {
+    transform: rotateY(180deg);
+  }
+  
+  b{
+    color: #009688;
+  }

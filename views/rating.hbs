@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rating</title>
+    <link rel="stylesheet" href="/css/rating.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+    {{> _header}}
+    <div class="row">
+        <div class="column">
+       
+        <h1 style="margin-left: 25px;">Rate your favourite parties!</h1>
+        <form method="post" class="rate-form">
+            <div class="txt_field">
+                <input type="text" placeholder=" " id="name" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="number" placeholder=" " required>
+                <span></span>
+                <label>Age</label>
+            </div>
+            <div class="field">
+                <label for="Party">Select a Party:</label>
+                    <select id="Party">
+                        <option value="1">BJP(Bhartiya Janta Party)</option>
+                        <option value="2">INC(Indian National Congress)</option>
+                        <option value="3">AAP(Aam aadmi party)</option>
+                        <option value="4">TMC(Trinamool Congress)</option>
+                        <option value="5">DMK(Dravida Munnetra Kazhagam)</option>
+                    </select>
+            </div>
+            <!--<div class="txt_field">
+                <input type="number" placeholder=" " required>
+                <span></span>
+                <label>Rating</label>
+            </div>
+            <div class="star-rating">
+                Rating: 
+                <div class="rating-css">
+                    <input type="radio" name="rating1" id="rating1">
+                    <label for="rating1" class="fa fa-star"></label>
+                    <input type="radio" name="rating1" id="rating2">
+                    <label for="rating2" class="fa fa-star"></label>
+                    <input type="radio" name="rating1" id="rating3">
+                    <label for="rating3" class="fa fa-star"></label>
+                    <input type="radio" name="rating1" id="rating4">
+                    <label for="rating4" class="fa fa-star"></label>
+                    <input type="radio" name="rating1" id="rating5">
+                    <label for="rating5" class="fa fa-star"></label>
+                  </div>
+              
+            </div>-->
+            <br>
+            <div>
+                <label for="Rating">Rate:</label>
+                ⭐
+            ⭐
+            ⭐
+            ✰
+            ✰
+            </div>
+            <button type="button">Submit</button>
+        </form>
+       
+      </div>
+      <div class="column">
+         <div class="rating-results">
+             <h1>View public ratings: </h1>
+           <p>Bhartiya Janta Party:
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+            ✰
+           </p>
+           <p>Indian National Congress:
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+           </p>
+           <p>Aam Aadmi Party:
+            ⭐
+            ⭐
+            ✰
+            ✰
+            ✰
+           </p>
+           <p>Trinamool Congress:
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+            ✰
+           </p>
+           <p>Dravida Munnetra Kazhagam:
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+            ⭐
+           </p>
+         </div>
+      </div>
+    </div>
+</div>
+</body>
+
+</html>

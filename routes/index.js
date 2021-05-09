@@ -27,4 +27,21 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
   }
 })
 
+// @desc    National news page
+// @route   GET /national-news
+router.get('/national-news',ensureAuth, (req, res) => {
+  res.render('news')
+})
+
+// @desc    State news page
+// @route   GET /state-news
+router.get('/state-news',ensureAuth, (req, res) => {
+  res.render('state-news')
+})
+
+// @desc    Ratings page
+// @route   GET /rating
+router.get('/rating',ensureAuth, (req, res) => {
+  res.render('rating')
+})
 module.exports = router
