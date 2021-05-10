@@ -1,6 +1,3 @@
-//const dotenv =require('dotenv').config();
-
-//const API_KEY=process.env.NEWS_API_KEY;
 var title=document.getElementsByClassName("card-img-title");
 var imgUrl=document.getElementsByClassName("news-card-image").src;
 var author=document.getElementsByClassName("card-author-content");

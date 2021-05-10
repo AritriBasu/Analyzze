@@ -1,6 +1,7 @@
 //const dotenv =require('dotenv').config();
 
 //const API_KEY=process.env.NEWS_API_KEY;
+function getState(){
 var title=document.getElementsByClassName("card-img-title");
 var imgUrl=document.getElementsByClassName("news-card-image").src;
 var author=document.getElementsByClassName("card-author-content");
@@ -12,9 +13,12 @@ console.log("img object"+imgUrl);
 
 console.log("State News");
 
+var state=document.getElementById("state").value;
+console.log(state);
+
 const getStateNews = async () => {
   console.log("Processing api call...");
-  const request = await fetch("https://newsapi.org/v2/everything?q=chennai%20AND%20politics&apiKey=d486174026474909a29a1342be340ad5");
+  const request = await fetch(`https://newsapi.org/v2/everything?q=${state}%20AND%20politics&apiKey=d486174026474909a29a1342be340ad5`);
   const data = await request.json();
   return data;
 };
@@ -50,3 +54,5 @@ getStateNews().then(SData => {
   author[i].innerHTML=state_author;
   }//for loop
 });
+
+}
