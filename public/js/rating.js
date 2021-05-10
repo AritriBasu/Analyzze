@@ -57,6 +57,6 @@
         document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
 
         // Add number rating
-        document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
+       // document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
       }
     }

@@ -14,10 +14,7 @@ body{
     border-radius: 10px;
     width:500px;
 }
-.center h1{
-    text-align:center;
-    padding:0 0 20px 0;
-}
+
 .center form{
     padding:0 20px;
     box-sizing: border-box;
@@ -118,9 +115,15 @@ button:hover{
     margin:auto;
     border-radius: 20px;
     background-color:white;
-    width:60%;
+    width:75%;
 }
-
+#rating-submit{
+    background-color:#009688;
+    color:white;
+}
+#rating-submit:hover{
+    background-color: #4bf3e2c4;
+}
 
 /**star rating*/
 .stars-outer {
