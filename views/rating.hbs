@@ -14,104 +14,106 @@
     <div class="row">
         <div class="column">
        
-        <h1 style="margin-left: 25px;">Rate your favourite parties!</h1>
+        <h1>Rate your favourite parties!</h1>
         <form method="post" class="rate-form">
             <div class="txt_field">
                 <input type="text" placeholder=" " id="name" required>
-                <span></span>
+    
                 <label>Username</label>
             </div>
             <div class="txt_field">
                 <input type="number" placeholder=" " required>
-                <span></span>
                 <label>Age</label>
             </div>
-            <div class="field">
-                <label for="Party">Select a Party:</label>
-                    <select id="Party">
-                        <option value="1">BJP(Bhartiya Janta Party)</option>
-                        <option value="2">INC(Indian National Congress)</option>
-                        <option value="3">AAP(Aam aadmi party)</option>
-                        <option value="4">TMC(Trinamool Congress)</option>
-                        <option value="5">DMK(Dravida Munnetra Kazhagam)</option>
-                    </select>
+            <div class="rate">
+                <div class="form-group">
+                    <select id="product-select" class="form-control custom-select">
+                    <option value="0" disabled selected>Select Party</option>
+                    <option value="sony">Bhartiya Janta Party</option>
+                    <option value="samsung">Indian National Congress</option>
+                    <option value="vizio">Aam Aadmi Party</option>
+                    <option value="panasonic">Trinamool Congress</option>
+                   <option value="phillips">Dravida Munnetra Kazhagam</option>
+                   </select>
+                </div> 
+            <div class="form-group">
+            <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate 1 - 5" disabled>
+           </div>
+
             </div>
-            <!--<div class="txt_field">
-                <input type="number" placeholder=" " required>
-                <span></span>
-                <label>Rating</label>
-            </div>
-            <div class="star-rating">
-                Rating: 
-                <div class="rating-css">
-                    <input type="radio" name="rating1" id="rating1">
-                    <label for="rating1" class="fa fa-star"></label>
-                    <input type="radio" name="rating1" id="rating2">
-                    <label for="rating2" class="fa fa-star"></label>
-                    <input type="radio" name="rating1" id="rating3">
-                    <label for="rating3" class="fa fa-star"></label>
-                    <input type="radio" name="rating1" id="rating4">
-                    <label for="rating4" class="fa fa-star"></label>
-                    <input type="radio" name="rating1" id="rating5">
-                    <label for="rating5" class="fa fa-star"></label>
-                  </div>
-              
-            </div>-->
             <br>
-            <div>
-                <label for="Rating">Rate:</label>
-                ⭐
-            ⭐
-            ⭐
-            ✰
-            ✰
-            </div>
+            
             <button type="button">Submit</button>
         </form>
        
       </div>
       <div class="column">
-         <div class="rating-results">
-             <h1>View public ratings: </h1>
-           <p>Bhartiya Janta Party:
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-            ✰
-           </p>
-           <p>Indian National Congress:
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-           </p>
-           <p>Aam Aadmi Party:
-            ⭐
-            ⭐
-            ✰
-            ✰
-            ✰
-           </p>
-           <p>Trinamool Congress:
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-            ✰
-           </p>
-           <p>Dravida Munnetra Kazhagam:
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-            ⭐
-           </p>
+         <div class="rating-results-user">
+             <h1 style="margin-left: -50px;">View public ratings: </h1>
+           <!--rating table-->
+           
+  <table class="table table-striped" style="width:80%;">
+    <thead>
+      <tr>
+        <th>Party Name</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="sony">
+        <td>Bharatiya Janta Party</td>
+        <td>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="number-rating"></span>
+        </td>
+      </tr>
+      <tr class="samsung">
+        <td>Indian National Congress</td>
+        <td>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="number-rating"></span>
+        </td>
+      </tr>
+      <tr class="vizio">
+        <td>Aam Aadmi Party</td>
+        <td>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="number-rating"></span>
+        </td>
+      </tr>
+      <tr class="panasonic">
+        <td>Trinamool Congress</td>
+        <td>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="number-rating"></span>
+        </td>
+      </tr>
+      <tr class="phillips">
+        <td>Dravida Munnetra Kazhagam</td>
+        <td>
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
+          <span class="number-rating"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+            <!--rating table ends-->
          </div>
       </div>
     </div>
 </div>
+
+<script src="/js/rating.js"></script>
 </body>
 
 </html>

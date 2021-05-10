@@ -17,7 +17,6 @@ body{
 .center h1{
     text-align:center;
     padding:0 0 20px 0;
-    border-bottom:1px solid grey;
 }
 .center form{
     padding:0 20px;
@@ -25,7 +24,6 @@ body{
 }
 form .txt_field{
     position:relative;
-    border-bottom:2px solid #adadad;
     margin:30px 0;
 }
 .txt_field input{
@@ -107,126 +105,55 @@ button:hover{
 }
 
 .row{
-display: flex;
+  display: flex;
+  text-align:center;
 }
 .column{
     flex:50%;
+    margin:auto;
 }
 .rate-form{
-    border: 5px solid #2691d9;
+    border: 2px solid #2691d9;
     padding: 10px;
-    margin:20px;
-    border-radius: 25px;
-    width:80%;
-}
-/***navbar styles***/
-  /**nav styles**/
-  .navbar{
-    width:85%;
     margin:auto;
-    padding:35px 0;
-    display:flex;
-    align-items: space-between;
+    border-radius: 20px;
+    background-color:white;
+    width:60%;
 }
-.logo{
-  width:120px;
-  cursor:pointer;
-}
-.navbar ul li{
-  list-style:none;
-  display:inline-block;
-  margin:0 20px;
-  position:relative;
-}
-.navbar ul li a{
-  text-decoration: none;
-  color:#fff;
-  text-transform:uppercase;
-}
-.navbar ul li::after{
-  content:'';
-  height:3px;
-  width:0;
-  background:#009688;
-  position:absolute;
-  left:0;
-  bottom: -10px;
-  transition:0.5s;
-}
-.navbar ul li:hover::after{
-  width:100%;
-}
-.content{
-  width:100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align:center;
-  color:#fff;
-}
-.content h1{
-  font-size:70px;
-  margin-top: 80px;
-}
-.content p{
-  margin:20px auto;
-  font-weight:100;
-}
-button{
-  width:200px;
-  padding:15px 0;
-  text-align:center;
-  margin:20px 10px;
-  border:2px solid #009688;
-  border-radius:25px;
-  font-weight:bold;
-  color:#fff;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-span{
-  background: #009688;
-  height:100%;
-  width:0;
-  border-radius:25px;
-  position: absolute;
-  left:0;
-  bottom:0;
-  z-index:-1;
-  transition: 0.5s;
-}
-button:hover span{
-  width:100%;
-}
-button:hover{
-  border:none;
-}
-/**navbar ends**/
+
 
 /**star rating*/
+.stars-outer {
+  position: relative;
+  display: inline-block;
+}
 
-  .rating-css div {
-    color: #009688;
-    font-size: 30px;
-    font-family: sans-serif;
-    font-weight: 800;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 20px 0;
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}
+/***star rating ends***/
+
+@media screen and (max-width:600px){
+  .column{
+    width:100%;
   }
-  .rating-css input {
-    display: none;
-  }
-  .rating-css input + label {
-    font-size: 60px;
-    text-shadow: 1px 1px 0 #ffe400;
-    cursor: pointer;
-  }
-  .rating-css input:checked + label ~ label {
-    color: #838383;
-  }
-  .rating-css label:active {
-    transform: scale(0.8);
-    transition: 0.3s ease;
-  }
+}
