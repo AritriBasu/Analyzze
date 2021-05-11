@@ -102,6 +102,7 @@ button:hover{
 .aboutus{
     display:flex;
     flex-direction:row;
+    height:100vh;
 }
 .content-about, .aboutus img{
     width:50%;
@@ -110,7 +111,7 @@ button:hover{
     background-color:  rgb(49, 52, 68);
     color:white;
     text-align:center;
-    padding:100px;
+    padding:40px;
 }
 .content-about h2{
     font-size:40px;
