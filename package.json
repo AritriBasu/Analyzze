@@ -22,7 +22,9 @@
     "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "sentiment": "^5.0.2",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",

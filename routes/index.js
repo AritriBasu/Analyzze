@@ -40,4 +40,10 @@ router.get('/state-news',ensureAuth, (req, res) => {
 router.get('/rating',ensureAuth, (req, res) => {
   res.render('rating')
 })
+
+// @desc    Sentiment page
+// @route   GET /rating
+router.get('/sentiment',ensureAuth, (req, res) => {
+  res.render('sentiment')
+})
 module.exports = router

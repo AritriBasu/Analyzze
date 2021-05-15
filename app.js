@@ -1,14 +1,16 @@
-const path = require('path')
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const morgan = require('morgan')
-const exphbs = require('express-handlebars')
-const methodOverride = require('method-override')
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const connectDB = require('./config/db')
+const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const exphbs = require('express-handlebars');
+const methodOverride = require('method-override');
+const passport = require('passport');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const connectDB = require('./config/db');
+var Twit = require('twit');
+var Sentiment =require('sentiment');
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -93,6 +95,57 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+
+//Sentiment Analysis
+var T = new Twit({
+  consumer_key:process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret:process.env.TWITTER_CONSUMER_SECRET,
+  access_token:process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret:process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
+
+app.get('/search/:key',(req,res)=>{
+  var sentKey=req.params.key;
+  var receivedTweets;
+  console.log(sentKey);
+
+  //fetching tweets with the keyword
+  var params = {
+      q:sentKey,
+      count: 2
+  }
+   
+  T.get('search/tweets',params,function(err,data,response){
+      var tweetText;
+      if(!err){
+          for(let i = 0; i < data.statuses.length; i++){
+              var tweetText=data.statuses[i].text;
+              console.log(`Tweet text ${i} ${tweetText}`);
+
+              //sentiment analysis
+              var sentiment=new Sentiment();
+              var docx=sentiment.analyze(tweetText);
+              console.log(docx.comparative);
+              //printing positive, negative, neutral
+              if(docx.comparative>0)
+               console.log("positive");
+              else if(docx.comparative<0)
+               console.log("negative");
+              else
+               console.log("neutral");
+
+           }//for each tweet
+          //console.log(data);
+          receivedTweets=data;
+      }//!err
+      else{
+          console.log(err);
+      }
+  })
+
+  res.json(receivedTweets);
+});
+
 
 const PORT = process.env.PORT || 3000
 

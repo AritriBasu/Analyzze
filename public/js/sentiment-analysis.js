@@ -1,51 +1,24 @@
-const HOSTED_URLS = {
-    queryTwitter:  window.location.protocol + '//'+ window.location.hostname + '../php/queryTwitter.php?q=',
-    model: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/model.json',
-    metadata: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json'
-};  
-const LOCAL_URLS = {
-    queryTwitter:  'php/queryTwitter.php?q=',
-    model: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/model.json',
-    metadata: 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json'
-};
-const SentimentThreshold = {
-    Positive: 0.66,
-    Neutral: 0.33,
-    Negative: 0
+alert("connected");
+
+function searchParty(){
+
+var keyword=document.getElementById("key").value;
+//console.log(keyword);
+
+const fetchTweets=async()=>{
+    alert("tweets called");
+    const response=await fetch(`http://localhost:3000/search/${keyword}`,{mode:'no-cors'});
+    const result=response;
+    return result;
 }
-const PAD_INDEX = 0;
-const OOV_INDEX = 2;
 
-let urls, model, metadata;
-
-$("#tag-input").on('keyup', function (e) {
-    if (e.keyCode === 13) {
-        twitterSentiment();
-    }
+fetchTweets().then(data=>{
+    console.log(data);
 });
 
-$(".btn-search").click(function () {
-    twitterSentiment();
-});
+}//function
 
-function init(){
-    if(window.location.hostname == 'localhost'){
-        urls = LOCAL_URLS;
-    }else {
-        urls = HOSTED_URLS;
-    }
-}
-
-async function setupSentimentModel(){
-    if(typeof model === 'undefined'){
-        model = await loadModel(urls.model);
-    }
-    if(typeof metadata === 'undefined'){
-        metadata = await loadMetadata(urls.metadata);
-    }
-}
-
-function twitterSentiment(){
+/**function twitterSentiment(){
     $('#tweet-list').addClass('d-none');
     $('#positive').empty();
     $('#neutral').empty();
@@ -55,20 +28,19 @@ function twitterSentiment(){
     
     getTwitterHashTagData($("#tag-input").val(), processTwitterData);
 }
+*/
 
-function processTwitterData(tweets){
-    setupSentimentModel().then(
-        result => {
+/** 
+//have to pass tweets in this function
+function processTwitterData(tweets,sentiment_score){
             const twitterData = [];
             $.each(tweets, function( index, tweet ) {
-                const tweet_text = tweet.full_text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-                const sentiment_score = getSentimentScore(tweet_text);
                 let tweet_sentiment = '';
-                if(sentiment_score > SentimentThreshold.Positive){
+                if(sentiment_score >0){
                     tweet_sentiment = 'positive'
-                }else if(sentiment_score > SentimentThreshold.Neutral){
+                }else if(sentiment_score ==0){
                     tweet_sentiment = 'neutral'
-                }else if(sentiment_score >= SentimentThreshold.Negative){
+                }else if(sentiment_score < 0){
                     tweet_sentiment = 'negative'
                 }
                 twitterData.push({
@@ -84,84 +56,8 @@ function processTwitterData(tweets){
             displayTweets(twitterData.filter(t => t.sentiment == 'negative'), 'negative');
             $('#tweet-list').removeClass('d-none');
             displayPieChart(twitterData);
-        }
-    )   
 }
 
-async function loadModel(url) {
-    try {
-        const model = await tf.loadLayersModel(url);
-        return model;
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-async function loadMetadata(url) {
-    try {
-        const metadataJson = await fetch(url);
-        const metadata = await metadataJson.json();
-        return metadata;
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-function padSequences(sequences, maxLen, padding = 'pre', truncating = 'pre', value = PAD_INDEX) {
-  return sequences.map(seq => {
-    if (seq.length > maxLen) {
-      if (truncating === 'pre') {
-        seq.splice(0, seq.length - maxLen);
-      } else {
-        seq.splice(maxLen, seq.length - maxLen);
-      }
-    }
-
-    if (seq.length < maxLen) {
-      const pad = [];
-      for (let i = 0; i < maxLen - seq.length; ++i) {
-        pad.push(value);
-      }
-      if (padding === 'pre') {
-        seq = pad.concat(seq);
-      } else {
-        seq = seq.concat(pad);
-      }
-    }
-
-    return seq;
-  });
-}
-
-function getSentimentScore(text) {
-    const inputText = text.trim().toLowerCase().replace(/(\.|\,|\!)/g, '').split(' ');
-    // Convert the words to a sequence of word indices.
-    const sequence = inputText.map(word => {
-      let wordIndex = metadata.word_index[word] + metadata.index_from;
-      if (wordIndex > metadata.vocabulary_size) {
-        wordIndex = OOV_INDEX;
-      }
-      return wordIndex;
-    });
-    // Perform truncation and padding.
-    const paddedSequence = padSequences([sequence], metadata.max_len);
-    const input = tf.tensor2d(paddedSequence, [1, metadata.max_len]);
-
-    const predictOut = model.predict(input);
-    const score = predictOut.dataSync()[0];
-    predictOut.dispose();
-
-    return score;
-}
-
-function getTwitterHashTagData(query, callback) {
-    $.getJSON( urls.queryTwitter + query, function(result) {
-        console.log(result);
-        if(result !== null && result.statuses !== null){
-            callback(result.statuses);
-        }
-    });
-}
 
 function displayTweets(twitterData, sentiment){
     var tbl  = document.createElement('table');
@@ -225,5 +121,4 @@ function displayPieChart(twitterData){
     });
     chart.render();
 }
-
-init();
+*/
