@@ -106,8 +106,8 @@ var T = new Twit({
 
 app.get('/search/:key',(req,res)=>{
   var sentKey=req.params.key;
-  var receivedTweets;
   console.log(sentKey);
+  let tweetsArr = []
 
   //fetching tweets with the keyword
   var params = {
@@ -120,30 +120,46 @@ app.get('/search/:key',(req,res)=>{
       if(!err){
           for(let i = 0; i < data.statuses.length; i++){
               var tweetText=data.statuses[i].text;
-              console.log(`Tweet text ${i} ${tweetText}`);
+              // console.log(`Tweet text ${i} ${tweetText}`);
 
               //sentiment analysis
               var sentiment=new Sentiment();
               var docx=sentiment.analyze(tweetText);
-              console.log(docx.comparative);
+              // console.log(docx.comparative);
+              let comp = docx.comparative
+              tweetsArr.push({tweetText: tweetText, 
+              comp: comp})
               //printing positive, negative, neutral
-              if(docx.comparative>0)
-               console.log("positive");
-              else if(docx.comparative<0)
-               console.log("negative");
-              else
-               console.log("neutral");
+              // if(docx.comparative>0)
+              //  console.log("positive");
+              // else if(docx.comparative<0)
+              //  console.log("negative");
+              // else
+              //  console.log("neutral");
 
            }//for each tweet
           //console.log(data);
           receivedTweets=data;
+
+          if(tweetsArr.length>0){
+            res.status(200).json(tweetsArr)
+         } else{
+           res.status(404).json({
+             message: "error/..."
+           })
+         }
       }//!err
       else{
           console.log(err);
+          res.status(404).json({
+            message: "error/..."
+          })
       }
   })
 
-  res.json(receivedTweets);
+
+ 
+
 });
 
 
