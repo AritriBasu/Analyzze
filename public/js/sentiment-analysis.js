@@ -1,15 +1,15 @@
-alert("connected");
-
 function searchParty(){
 
 var keyword=document.getElementById("key").value;
-//console.log(keyword);
 
 const fetchTweets=async()=>{
-    alert("tweets called");
-    const response=await fetch(`http://localhost:3000/search/${keyword}`,{mode:'no-cors'});
-    const result=response;
-    return result;
+    try {
+        const response=await fetch(`http://localhost:3000/search/${keyword}`,{mode:'no-cors'});
+        const body = await response.json()
+        return body;
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 fetchTweets().then(data=>{
