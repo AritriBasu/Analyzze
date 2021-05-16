@@ -112,7 +112,7 @@ app.get('/search/:key',(req,res)=>{
   //fetching tweets with the keyword
   var params = {
       q:sentKey,
-      count: 2
+      count: 10
   }
    
   T.get('search/tweets',params,function(err,data,response){
@@ -120,7 +120,7 @@ app.get('/search/:key',(req,res)=>{
       if(!err){
           for(let i = 0; i < data.statuses.length; i++){
               var tweetText=data.statuses[i].text;
-              // console.log(`Tweet text ${i} ${tweetText}`);
+              //console.log(`Tweet text ${i} ${tweetText}`);
 
               //sentiment analysis
               var sentiment=new Sentiment();
@@ -138,8 +138,6 @@ app.get('/search/:key',(req,res)=>{
               //  console.log("neutral");
 
            }//for each tweet
-          //console.log(data);
-          receivedTweets=data;
 
           if(tweetsArr.length>0){
             res.status(200).json(tweetsArr)
@@ -156,10 +154,6 @@ app.get('/search/:key',(req,res)=>{
           })
       }
   })
-
-
- 
-
 });
 
 

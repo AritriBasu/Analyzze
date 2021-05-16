@@ -1,6 +1,6 @@
 function searchParty(){
 
-var keyword=document.getElementById("key").value;
+var keyword=document.getElementById("tag-input").value;
 
 const fetchTweets=async()=>{
     try {
@@ -14,23 +14,25 @@ const fetchTweets=async()=>{
 
 fetchTweets().then(data=>{
     console.log(data);
+    twitterSentiment();
+    for(i=0;i<data.length;i++)
+    {
+        console.log(data[i].tweetText+"  "+data[i].comp);
+    }
 });
+
 
 }//function
 
-/**function twitterSentiment(){
+function twitterSentiment(){
     $('#tweet-list').addClass('d-none');
     $('#positive').empty();
     $('#neutral').empty();
     $('#negative').empty();
     $('#chartContainer').empty();
     $('.spinner-border').removeClass('d-none');
-    
-    getTwitterHashTagData($("#tag-input").val(), processTwitterData);
 }
-*/
 
-/** 
 //have to pass tweets in this function
 function processTwitterData(tweets,sentiment_score){
             const twitterData = [];
@@ -121,4 +123,3 @@ function displayPieChart(twitterData){
     });
     chart.render();
 }
-*/
