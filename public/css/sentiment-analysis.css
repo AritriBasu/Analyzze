@@ -25,6 +25,7 @@ body{
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
+    font-feature-settings:'liga';
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
@@ -89,6 +90,9 @@ body{
     margin: 15px;
 }
 
+#positive-tab{
+    border: 0.5px solid #6878AD;
+}
 #positive-tab.nav-link{
     color: #6878AD;
 }
@@ -96,12 +100,19 @@ body{
     color: #fff;
     background-color: #6878AD;
 }
+#neutral-tab{
+    border: 0.5px solid #28a745;
+
+}
 #neutral-tab.nav-link.active{
     color: #fff;
-    background-color: #00D0A4;
+    background-color: #28a745;
 }
 #neutral-tab.nav-link{
-    color: #00D0A4;
+    color: #28a745;
+}
+#negative-tab{
+    border: 0.5px solid #F2736A;
 }
 #negative-tab.nav-link.active{
     color: #fff;
@@ -112,4 +123,7 @@ body{
 }
 .nav-link {
     padding: .5rem .8rem !important;
+}
+#tweet-list{
+    color: #fff;
 }

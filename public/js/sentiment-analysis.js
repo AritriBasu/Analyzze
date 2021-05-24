@@ -14,10 +14,8 @@ const fetchTweets=async()=>{
 }
 
 fetchTweets().then(data=>{
-    //console.log(data);
     twitterSentiment();
     tweetData=data;
-    //console.log(tweetData);
     for(i=0;i<tweetData.length;i++)
     {
         console.log(tweetData[i].tweetText+"  "+tweetData[i].comp);
@@ -105,7 +103,7 @@ function displayPieChart(twitterData){
     }
 
     var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "light2",
+        theme: "dark2",
         exportEnabled: true,
         animationEnabled: true,
         data: [{
