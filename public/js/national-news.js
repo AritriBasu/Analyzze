@@ -1,9 +1,3 @@
-var title=document.getElementsByClassName("card-img-title");
-var author=document.getElementsByClassName("card-author-content");
-var pubAt=document.getElementsByClassName("card-date-content");
-var description=document.getElementsByClassName("card-description");
-var moreUrl=document.getElementsByClassName("read-more");
-
 console.log("National News");
 
 const getNationalNews = async () => {

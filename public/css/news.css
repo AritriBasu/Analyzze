@@ -4,7 +4,7 @@
 
 body {
    background: #4fd4fc6c;
-    /*background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(../images/6383.jpg);*/
+   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   }
   
   /**nav styles**/
@@ -187,3 +187,26 @@ button:hover{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  /**state form button**/
+  #form-button{
+    background-color: #28a745;
+    color: #fff;
+    outline: none;
+    border: none;
+  }
+
+#form-button :hover{
+  background-color: #28a7465d !important;
+}
+
+#state-form{
+  width:100%;
+  height:68.2vh;
+  background-color:#99f54d52;
+  border:1px solid #66d6f800;
+  border-radius:2px;
+}
+#state::placeholder{
+  color: #fff;
+}
