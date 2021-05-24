@@ -112,7 +112,7 @@ app.get('/search/:key',(req,res)=>{
   //fetching tweets with the keyword
   var params = {
       q:sentKey,
-      count: 10
+      count: 100
   }
    
   T.get('search/tweets',params,function(err,data,response){
@@ -120,23 +120,12 @@ app.get('/search/:key',(req,res)=>{
       if(!err){
           for(let i = 0; i < data.statuses.length; i++){
               var tweetText=data.statuses[i].text;
-              //console.log(`Tweet text ${i} ${tweetText}`);
-
               //sentiment analysis
               var sentiment=new Sentiment();
               var docx=sentiment.analyze(tweetText);
-              // console.log(docx.comparative);
               let comp = docx.comparative
               tweetsArr.push({tweetText: tweetText, 
               comp: comp})
-              //printing positive, negative, neutral
-              // if(docx.comparative>0)
-              //  console.log("positive");
-              // else if(docx.comparative<0)
-              //  console.log("negative");
-              // else
-              //  console.log("neutral");
-
            }//for each tweet
 
           if(tweetsArr.length>0){

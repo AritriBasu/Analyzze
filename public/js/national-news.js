@@ -15,28 +15,31 @@ const getNationalNews = async () => {
 
 getNationalNews().then(NData => {
   console.log(NData);
-  for(var i=0;i<12;i++){
-  
-  var national_title=NData.articles[i].title;
-  console.log(typeof(national_title));
-  title[i].innerHTML=national_title;
-
-  var national_description=NData.articles[i].description;
-  description[i].innerHTML=national_description;
-
-  var national_url=NData.articles[i].url;
-  moreUrl[i].href=national_url;
-
-  var imgUrl=document.getElementById(`img${i}`);
-  var national_imgUrl=NData.articles[i].urlToImage;
-  console.log(national_imgUrl);
-  imgUrl.src=national_imgUrl;
-
-  var national_pubAt=NData.articles[i].publishedAt;
-  pubAt[i].innerHTML=national_pubAt;
-
-  var national_author=NData.articles[i].author;
-  author[i].innerHTML=national_author;
-  
-  }//for loop
+  let newsDisp="";
+  let updatedNews=NData.articles;
+  for(var i in updatedNews){
+    if(!updatedNews[i].urlToImage)
+    updatedNews[i].urlToImage="http://www.vermiculite.uz/admin/adminfiles/news_(5).jpg";
+    newsDisp+=`<div class="col-md-4 card-container">
+    <div class="card card-flip">
+      <div class="front card-block">
+        <img src="${updatedNews[i].urlToImage}" alt="img10" id="img10" class="news-card-img">
+        <h5 class="card-img-title">${updatedNews[i].title}</h5>
+      </div>
+      <div class="back card-block">
+        <p class="card-author"><b>Published by:</b>
+          <p class="card-author-content">${updatedNews[i].source.name}</p>
+        </p>
+        <p class="card-date"><b>Published at:</b><p class="card-date-content">${updatedNews[i].publishedAt}</p></p>
+        <p class="card-description">
+        ${updatedNews[i].description}
+        </p>
+        <a href="${updatedNews[i].url}" class="btn btn-outline-primary read-more">Read More</a>
+      </div>
+    </div>
+    </div>`;
+  }
+  if(newsDisp !== "")
+     $("#newsResults").html(newsDisp);
+     $(".loading").hide();
 });

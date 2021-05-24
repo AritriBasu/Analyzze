@@ -146,6 +146,7 @@ button:hover{
   
   .card-flip .back {
     padding: 2px;
+    margin-top: -20em;
     text-align: left;
     position: relative;
     z-index: 0;
@@ -158,4 +159,31 @@ button:hover{
   
   b{
     color: #009688;
+  }
+
+  /**loader logic**/
+  .loading{
+    width:100vw;
+    height:75vh;
+  }
+  .loader {
+    margin:auto;
+    border: 16px solid #4fd4fc6c;
+    border-radius: 50%;
+    border-top: 16px solid #009688;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }

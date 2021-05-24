@@ -1,3 +1,4 @@
+let tweetData=[];
 function searchParty(){
 
 var keyword=document.getElementById("tag-input").value;
@@ -13,16 +14,16 @@ const fetchTweets=async()=>{
 }
 
 fetchTweets().then(data=>{
-    console.log(data);
+    //console.log(data);
     twitterSentiment();
-    for(i=0;i<data.length;i++)
+    tweetData=data;
+    //console.log(tweetData);
+    for(i=0;i<tweetData.length;i++)
     {
-        console.log(data[i].tweetText+"  "+data[i].comp);
+        console.log(tweetData[i].tweetText+"  "+tweetData[i].comp);
     }
+    processTwitterData(tweetData);
 });
-
-
-}//function
 
 function twitterSentiment(){
     $('#tweet-list').addClass('d-none');
@@ -34,23 +35,24 @@ function twitterSentiment(){
 }
 
 //have to pass tweets in this function
-function processTwitterData(tweets,sentiment_score){
+function processTwitterData(tweetData){
             const twitterData = [];
-            $.each(tweets, function( index, tweet ) {
+            for(i=0;i<tweetData.length;i++)
+            {
                 let tweet_sentiment = '';
-                if(sentiment_score >0){
+                if(tweetData[i].comp >0){
                     tweet_sentiment = 'positive'
-                }else if(sentiment_score ==0){
+                }else if(tweetData[i].comp ==0){
                     tweet_sentiment = 'neutral'
-                }else if(sentiment_score < 0){
+                }else if(tweetData[i].comp < 0){
                     tweet_sentiment = 'negative'
                 }
                 twitterData.push({
                     sentiment: tweet_sentiment,
-                    score: sentiment_score.toFixed(4),
-                    tweet: tweet_text
+                    score: tweetData[i].comp,
+                    tweet: tweetData[i].tweetText
                 });
-            });
+            }
             console.log(twitterData);
             $('.spinner-border').addClass('d-none');
             displayTweets(twitterData.filter(t => t.sentiment == 'positive'), 'positive');
@@ -123,3 +125,5 @@ function displayPieChart(twitterData){
     });
     chart.render();
 }
+
+}//function
