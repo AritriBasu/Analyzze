@@ -6,8 +6,8 @@
                 Need Advice?<br />Don't worry we've got your back!!
             </p>
             <div>
-                <button type="button">GET STARTED</button>
-                <button type="button">ABOUT US</button>
+                <button type="button" class="header-button"><a href="/sentiment">GET STARTED</a></button>
+                <button type="button" class="header-button"><a href="#aboutus">ABOUT US</a></button>
             </div>
         </div>
     </div>
@@ -33,13 +33,16 @@
         <h2>Contact Us</h2>
         <p>For any queries please feel free to reach out to us. We will try our best to respond to your queries!!!!</p>
         <div class="contact-div">
-            <img src="/images/contact.png" alt="">
-            <form>
-                <input type="text" placeholder="Enter your name">
-                <input type="email" placeholder="Enter your email">
-                <input type="text" placeholder="Enter your phone">
-                <textarea placeholder="Enter your question"></textarea>
-                <button>Submit</button>
+            <img src="/images/contact.png" alt="contact-img">
+            <form method="POST" action="submit-data">
+                {{#if msg}}
+                <p>Your query has been sent!</p>
+                {{/if}}
+                <input type="text" placeholder="Enter your name" name="name">
+                <input type="email" placeholder="Enter your email" name="email">
+                <input type="text" placeholder="Enter your phone" name="phone">
+                <textarea placeholder="Enter your question" name="message"></textarea>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </section>

@@ -68,7 +68,8 @@ html{
     margin:20px auto;
     font-weight:100;
 }
-button{
+
+.header-button{
     width:200px;
     padding:15px 0;
     text-align:center;
@@ -76,19 +77,20 @@ button{
     border:2px solid #009688;
     border-radius:25px;
     font-weight:bold;
-    background: transparent;
+    background-color: #009687b0;
     color:#fff;
     cursor:pointer;
     position:relative;
     overflow:hidden;
 }
+.header-button a{
+  text-decoration: none;
+  color:white;
+}
+.header-button:hover{
+    background-color: #009639b0;
+}
 
-button:hover span{
-    width:100%;
-}
-button:hover{
-    border:none;
-}
 .aboutus{
     display:flex;
     flex-direction:row;
@@ -135,12 +137,11 @@ form{
     width: 50%;
     display: flex;
     flex-direction: column;
-    background: cyan;
+    background-color:#99f54d52;
     padding: 50px
 }
 form input, form textarea{
     margin: 10px 0;
-    background: cyan;
     padding: 5px;
     border: none;
     border-bottom: 2px solid white;
@@ -148,18 +149,19 @@ form input, form textarea{
     font-size: 14px;
 }
 form button{
-    border: 2px solid white;
     border-radius: 10px;
     outline: none;
-    background: cyan;
     padding: 7px 15px;
     margin-left: auto;
     cursor: pointer;
     transition: 0.4s ease;
+    background-color: #28a745;
+    color: #fff;
+    outline: none;
+    border: none;
 }
 form button:hover{
-    background: white;
-    color: cyan;
+    background-color: #28a7465d;
 }
 footer{
     position: absolute;
